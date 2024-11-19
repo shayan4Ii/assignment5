@@ -71,7 +71,8 @@ class WendySpider(scrapy.Spider):
             'address' : f"{address}, {address_2}, {address_3}, {address_4} ",
             'services' : services,
             'url' : response.url,
-            'hours' : hours_dict
+            'hours' : hours_dict,
+            'number' : response.xpath("//script[contains(text(), 'pageSetId')]/text()").re_first(r'(?:ids\"\:)(.*?)(?:,)')
             
         }
         
